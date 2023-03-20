@@ -10,12 +10,14 @@ export default function App() {
   const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
     <View style={[styles.container, {backgroundColor}]}>
-      <TouchableHighlight style={styles.button}>
-        <View>
-          <View style{styles.sample, {backgroundColor: "yellow"}} />
+      <TouchableHighlight style={styles.button}
+        onPress={() => setBackgroundColor('yellow')}
+        underlayColor='orange'
+      >
+        <View style={styles.row}>
+          <View style={[styles.sample, {backgroundColor: "yellow"}]} />
           <Text style={styles.buttonText}>yellow</Text>
         </View>
-
       </TouchableHighlight>
     </View>
   );
@@ -33,15 +35,21 @@ const styles = StyleSheet.create({
     padding: 10,
     borderWidth: 2,
     borderRadius: 10, 
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
+    backgroundColor: 'rgba(255,255,255, .8'
   },
   buttonText: {
     fontSize: 30,
     textAlign: 'center'
   },
+  row: {
+    flexDirection: 'row'
+  },
   sample: {
     height: 20,
     width: 20,
+    margin:5,
+    borderRadius: 10,
     backgroundColor: 'white'
   }
 });
