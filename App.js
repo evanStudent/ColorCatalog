@@ -33,6 +33,7 @@ export default function App() {
       <Button title="click me" onPress={onButtonPress} />
       <Text>Height: {height} </Text>
       <Text> Width: {width} </Text>
+      <Text> please update</Text>
     </View>
   );
 }
