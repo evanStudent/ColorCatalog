@@ -9,10 +9,12 @@ import {
   Alert, 
   Dimensions,
   Platform,
-  ProgressBarAndroid
+  ProgressBarAndroid,
+  Image
  } from 'react-native';
 
-const { height, width } = Dimensions.get('window');
+ import picBiscuit from './assets/biscuit.jpg';
+ import picJungle from './assets/jungle.jpg';
 
 export default function App() {
   const onButtonPress = () => {
@@ -20,32 +22,22 @@ export default function App() {
   }
   return (
     <View style={styles.page}>
-      <Text style={styles.text}>red</Text>
-      <Text style={[styles.text, styles.selectedText]}>green</Text>
-      <Text style={styles.text}>blue</Text>
+      <Image style={styles.image} source={picBiscuit} />
+      <Image style={styles.image} source={picJungle} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'flex-start',
-    marginTop: 40,
-    backgroundColor: '#DDD'
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  text: {
-    textAlign: 'center',
-    fontSize: 22,
-    color: 'red',
-    backgroundColor:'yellow',
+  image: {
+    flex: 1,
+    borderRadius: 50,
     margin: 10,
-    padding: 5
-  },
-  selectedText: {
-    alignSelf: 'flex-end',
-    backgroundColor: 'red',
-    color: 'yellow'
+    width: Dimensions.get('window').width-10
   }
 });
