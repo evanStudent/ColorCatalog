@@ -1,29 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { 
+import { useState } from 'react'
+import {
   StyleSheet,
   Text, 
-  View, 
-  Button, 
-  ActivityIndicator, 
-  ProgressViewIOS, 
-  Alert, 
-  Dimensions,
-  Platform,
-  ProgressBarAndroid,
-  Image
- } from 'react-native';
+  View }
+from 'react-native';
 
  import picBiscuit from './assets/biscuit.jpg';
  import picJungle from './assets/jungle.jpg';
 
 export default function App() {
-  const onButtonPress = () => {
-    Alert.alert(`${new Date().toLocaleDateString()} button press`)
-  }
+  const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
-    <View style={styles.page}>
-      <Image style={styles.image} source={picBiscuit} />
-      <Image style={styles.image} source={picJungle} />
+    <View style={[styles.container, {backgroundColor}]}>
+      <Text style={styles.button}
+        onPress={() => setBackgroundColor('green')}>green</Text>
+      <Text style={styles.button}
+        onPress={() => setBackgroundColor('red')}>red</Text>
     </View>
   );
 }
@@ -31,13 +23,13 @@ export default function App() {
 const styles = StyleSheet.create({
   page: {
     flex:1,
+    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   },
-  image: {
-    flex: 1,
-    borderRadius: 50,
+  button: {
+    fontSize: 30,
     margin: 10,
-    width: Dimensions.get('window').width-10
+    padding: 10,
   }
 });
