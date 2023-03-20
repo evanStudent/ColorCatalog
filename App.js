@@ -2,20 +2,21 @@ import { useState } from 'react'
 import {
   StyleSheet,
   Text, 
+  TouchableHighlight, 
   View }
 from 'react-native';
-
- import picBiscuit from './assets/biscuit.jpg';
- import picJungle from './assets/jungle.jpg';
 
 export default function App() {
   const [backgroundColor, setBackgroundColor] = useState("blue");
   return (
     <View style={[styles.container, {backgroundColor}]}>
-      <Text style={styles.button}
-        onPress={() => setBackgroundColor('green')}>green</Text>
-      <Text style={styles.button}
-        onPress={() => setBackgroundColor('red')}>red</Text>
+      <TouchableHighlight style={styles.button}>
+        <View>
+          <View style{styles.sample, {backgroundColor: "yellow"}} />
+          <Text style={styles.buttonText}>yellow</Text>
+        </View>
+
+      </TouchableHighlight>
     </View>
   );
 }
@@ -28,8 +29,19 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   button: {
-    fontSize: 30,
     margin: 10,
     padding: 10,
+    borderWidth: 2,
+    borderRadius: 10, 
+    alignSelf: 'stretch'
+  },
+  buttonText: {
+    fontSize: 30,
+    textAlign: 'center'
+  },
+  sample: {
+    height: 20,
+    width: 20,
+    backgroundColor: 'white'
   }
 });
