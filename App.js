@@ -19,30 +19,28 @@ export default function App() {
     Alert.alert(`${new Date().toLocaleDateString()} button press`)
   }
   return (
-    <View style={{ padding: 50 }}>
-      {Platform.OS === "ios" && <ProgressViewIOS progress={0.5} />}
-      {Platform.OS === "android" && (
-        <ProgressViewIOS 
-          styleAttr="Horizontal"
-          indeterminate={false}
-          color="blue"
-          progress={0.5} 
-        />
-      )}
-      <ActivityIndicator size="large" color="#61DBFB" />
-      <Button title="click me" onPress={onButtonPress} />
-      <Text>Height: {height} </Text>
-      <Text> Width: {width} </Text>
-      <Text> please update</Text>
+    <View style={styles.page}>
+      <Text style={styles.text}>red</Text>
+      <Text style={[styles.text, styles.selectedText]}>green</Text>
+      <Text style={styles.text}>blue</Text>
     </View>
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  page: {
+    marginTop: 40,
+    backgroundColor: '#DDD'
+  },
+  text: {
+    fontSize: 22,
+    color: 'red',
+    backgroundColor:'yellow',
+    margin: 10,
+    padding: 5
+  },
+  selectedText: {
+    backgroundColor: 'red',
+    color: 'yellow'
+  }
+});
