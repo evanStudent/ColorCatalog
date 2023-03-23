@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { generate } from "shortid";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage } from '@react-native-async';
 
 export const useColors = () => {
   const [colors, setColors] = useState([]);
