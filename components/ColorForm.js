@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { StyleSheet, View, TextInput, Button } from 'react-native';
 
-export default function ColorForm() {
+export default function ColorForm( {onNewColor = f => f }) {
+    const [inputValue, setValue] = useState("");
+    const input = useRef();
     return(
-        <View style={StyleSheet.container}>
-            <TextInput style={styles.txtInput} autoCapitalize="none" />
-            <Button title='add' />
+        <View style={styles.container}>
+            <TextInput 
+            ref={input}
+            style={styles.txtInput}
+            value={inputValue}
+            onChangeText={setValue}
+             autoCapitalize="none" 
+             placeholder="enter a color..."
+             />
+            <Button 
+                title='add' 
+                onPress={() => {
+                    input.current.blur();
+                    onNewColor(inputValue);
+                    setValue("");
+            }} 
+            />
         </View>
     );
 }
